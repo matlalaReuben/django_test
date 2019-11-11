@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+
+
+<style>
+
+.input_field{
+
+	color : rgbs( 12, 200, 200, 0.5 );
+}
+
+</style>
+
+{% block content %}
+	<P> fuck you</P>
+	<p class="input_field" >{{object.username}}</p>
+	<p class="input_field" >{{object.email}}</p>
+	<p class="input_field" >{{object.first_name}}</p>
+	<p class="input_field" >{{object.last_name}}</p>
+	<p class="input_field" >{{object.stdno}}</p>
+	<a href="{% url 'update_user' user.pk %}"> Update </a> | <a href="{% url 'password_change' %}"> Change Password </a> | <a href="{% url 'password_reset' %}"> Forgot Password </a>
+{% endblock content %}
