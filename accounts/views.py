@@ -25,3 +25,45 @@ class UserDetailView(LoginRequiredMixin,DetailView):
 	
 class AddCourseView():
 	template_name = 'add_course.html'
+
+
+def test_login(request):
+
+	if request.method == 'POST' or request.method == 'post':
+		print( "request.method == POST" )
+		username_value = request.POST.get("username")
+		password_value = request.POST.get("password")
+		print( "username_value :", username_value, "password_value :", password_value )
+	
+	elif request.method == 'get' or request.method == 'GET':
+		print("method is get" )
+		username_value = request.GET.get("username")
+		password_value = request.GET.get("password")
+		print( "username_value :", username_value, "password_value :", password_value )
+
+	else:
+		print( "something went wrong !!!" )
+
+	return render(request, 'registration/login.html' )
+
+def test_register(request):
+	if request.method == 'POST' or request.method == 'post':
+		print( "request.method == POST" )
+		username_value = request.POST.get("username")
+		password_value = request.POST.get("password")
+		c_password_value = request.POST.get("c_password")
+		print( "username_value :", username_value, "password_value :", password_value, "c_password :", c_password )
+	
+	elif request.method == 'get' or request.method == 'GET':
+		print("method is get" )
+		username_value = request.GET.get("username")
+		password_value = request.GET.get("password")
+		c_password_value = request.GET.get("c_password")
+
+		print( "username_value :", username_value, "password_value :", password_value, "c_password", c_password )
+
+	else:
+		print( "something went wrong !!!" )
+
+	return render(request, 'templates/signup.html' )
+

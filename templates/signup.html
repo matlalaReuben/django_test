@@ -1,18 +1,52 @@
-{% extends 'base.html' %}
 
-{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</head>
+	
+	{% extends 'base.html' %}
 
-{% block content %}
-<h2 class="row d-flex justify-content-center text-muted">Sign up</h2>
+	{% load crispy_forms_tags %}
 
-<div class="row justify-content-center">
-	<div class="col-lg-3">
-		<form method="POST" id="signup_form" novalidate>
-			{% csrf_token %}
-			{{ form | crispy }}
-			<button style="submit" class="btn btn-primary"> sign up </button>
-		</form>
+	{% block content %}
+	<h2 class="row d-flex justify-content-center text-muted">Sign up</h2>
+
+	<div class="row justify-content-center">
+		<div class="col-lg-3">
+			<form method="POST" action="test_register" >
+				{% csrf_token %}
+				{{ crispy }}
+				<div>
+					<label> username </label>
+					<input name="username" type="text" > </input>
+				</div>
+
+				<div>
+					<label> password </label>
+					<input name="password" type="password" > </input>
+				</div>
+
+				<div>
+					<label> confirm password </label>
+					<input name="c_password" type="password" > </input>
+				</div>
+
+				<div>
+					<button type="submit" type="btn"> Register </button>
+				</div>
+			</form>
+		</div>
 	</div>
-</div>
-
-{% endblock content %}
+	{% endblock content %}
+</html>
+			<!-- <form method="POST" id="signup_form" novalidate>
+				{% csrf_token %}
+				{{ form | crispy }}
+				<button style="submit" class="btn btn-primary"> sign up </button>
+			</form> -->

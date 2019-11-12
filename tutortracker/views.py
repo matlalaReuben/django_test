@@ -1,8 +1,11 @@
 from django.shortcuts import render
 
+from django.http import HttpResponse
+# from import 
+
 import pyrebase
 # pip install Pyrebase
-
+from google.cloud import firestore
 
 config = {
 	'apiKey' : "AIzaSyCZUMP0zqq9-taMYJmZNh-9aFNiKjDaFXA",
@@ -19,9 +22,9 @@ firebase = pyrebase.initialize_app( config );
 
 database = firebase.database()
 
-value = database.child("users")
+print( "database.child().get().val() : ", database.child().get().val() );
 
-print( "value : ", value, "value.val() : ", value.val())
+# print( "value : ", value, "value.val() : ", value.val())
 
 # Create your views here.
 from django.views.generic import TemplateView
@@ -35,3 +38,11 @@ class AboutPageView(TemplateView):
 	
 class AddCourseView(TemplateView):
 	template_name = 'add_course.html'
+
+class ForumView(TemplateView):
+    template_name = 'forum.html'
+
+def test_click(request):
+    print( "\n\n\ntest click\n\n\n" )
+    return render(request, 'add_course.html')
+    # return HttpResponse(HomePageView.template_name)

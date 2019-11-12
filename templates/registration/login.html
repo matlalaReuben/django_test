@@ -1,50 +1,59 @@
-{% extends 'base.html' %}
 
-{% load crispy_forms_tags %}
-
-{% block content %}
-
-<style>
-	#login_header{
-	color: grey;
-	// margin:
-	}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Tutor tracker</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</head>
 	
-	form{
-		// background-color:red;
-	}
-	
-	form p label{
-		color:grey;	
-	}
-	
-	form p input{
-		color:grey;	
-		text-align:center;
-	}
-	
-</style>
+	{% extends 'base.html' %}
 
-<h1 id="login_header" class="row d-flex justify-content-center text-muted" >Login</h1>
+	{% load crispy_forms_tags %}
+
+	{% block content %}
+
+	<h1 id="login_header" class="row d-flex justify-content-center text-muted" >Login</h1>
 
 
-<div id="signin_container" >
-	<div class="row justify-content-center">
-        <div class="col-lg-3">
-			<form method="POST" novalidate>
-	
-			{% csrf_token %}
-			{{form | crispy  }}
-			<button type="submit" id="login_button" class="btn btn-success" >login</button>
-		
-			<p><a href="{% url 'password_reset' %}"> Forgot Password </a></p>
-		</form>
+	<div id="signin_container" >
+		<div class="row justify-content-center">
+	        <div class="col-lg-3">
+				<form action="test_login" method="POST">
+					{% csrf_token %}
+					{{ crispy  }}
+					<div>
+						<label > username </label>
+						<input type="text" name="username"></input>
+					</div>
+
+					<div>
+						<label > password </label>
+						<input type="password" name="password" > </input>
+					</div>
+
+					<div>
+						<button type="submit" class="btn"> login </button>
+					</div>
+
+				</form>
+				<!-- <form method="POST" novalidate>
+				{% csrf_token %}
+				{{ form | crispy  }}
+				<button type="submit" id="login_button" class="btn btn-success" >login</button>
+					<p>
+						<a href="{% url 'password_reset' %}"> Forgot Password </a>
+					</p>
+				</form> -->
+			</div>
+		</div>
 	</div>
-	</div>
-	
-
-</div>
 
 
-	
-{% endblock content %}
+	{% endblock content %}
+
+</html>>
